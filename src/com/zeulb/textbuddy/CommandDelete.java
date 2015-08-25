@@ -2,26 +2,28 @@ package com.zeulb.textbuddy;
 
 public class CommandDelete implements Command {
     
-    int index;
+    private int deleteIndex;
 
     public CommandDelete(String args) throws Exception {
         try {
-            index = Integer.parseInt(args.trim())-1;
+            deleteIndex = Integer.parseInt(args)-1;
         } catch (NumberFormatException e) {
-            throw new Exception("Argument for command 'delete' is not an integer");
+            throw new Exception(String.format(Helper.NON_INTEGER_ARGUMENT, "delete"));
         }
     }
     
     @Override
-    public String execute(TextContainer tc) throws Exception {
-        String fileName = tc.getFileName();
+    public String execute(TextContainer container) throws Exception {
+        
         String text;
         try {
-            text = tc.remove(index);
+            text = container.remove(deleteIndex);
         } catch (IndexOutOfBoundsException e) {
-            throw new Exception("Argument for command 'delete' is out of bound");
+            throw new Exception(String.format(Helper.OUT_OF_BOUNDS_ARGUMENT, "delete"));
         }
-        return "deleted from " + fileName + ": \"" + text + "\"";
+        
+        String fileName = container.getFileName();
+        return String.format(Helper.DELETED_FORMAT, fileName, text);
     }
 
 }

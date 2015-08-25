@@ -2,17 +2,18 @@ package com.zeulb.textbuddy;
 
 public class CommandAdd implements Command {
     
-    String text;
+    private String text;
     
     public CommandAdd(String args) {
-        this.text = args.trim();
+        text = args;
     }
 
     @Override
-    public String execute(TextContainer tc) {
-        String fileName = tc.getFileName();
-        tc.add(text);
+    public String execute(TextContainer container) {
         
-        return "added to " + fileName + ": \"" + text + "\"";
+        container.add(text);
+        
+        String fileName = container.getFileName();
+        return String.format(Helper.ADD_TEXT_FORMAT, fileName, text);
     }
 }

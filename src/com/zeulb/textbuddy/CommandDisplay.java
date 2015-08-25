@@ -3,19 +3,20 @@ package com.zeulb.textbuddy;
 public class CommandDisplay implements Command {
     
     public CommandDisplay(String args) throws Exception {
-        if (args.trim().length() > 0) {
-            throw new Exception("Command 'display' doesn't need any arguments");
+        if (args.length() > 0) {
+            throw new Exception(String.format(Helper.INVALID_ARGUMENT, "display"));
         }
     }
 
     @Override
-    public String execute(TextContainer tc) {
-        String fileName = tc.getFileName();
-        if (tc.size() > 0) {
-            return tc.toString();
+    public String execute(TextContainer container) {
+        
+        if (container.size() > 0) {
+            return container.toString();
         }
         else {
-            return fileName + " is empty";
+            String fileName = container.getFileName();
+            return String.format(Helper.IS_EMPTY_FORMAT, fileName);
         }
     }
 

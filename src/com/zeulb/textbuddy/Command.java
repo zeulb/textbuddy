@@ -3,8 +3,8 @@ package com.zeulb.textbuddy;
 public interface Command {
     
     public static Command parseCommand(String text) throws Exception {
-        String commandText = StringHelper.getFirstWord(text);
-        String argumentText = text.substring(commandText.length());
+        String commandText = Helper.getFirstWord(text);
+        String argumentText = text.substring(commandText.length()).trim();
         
         Command command;
         
@@ -25,10 +25,10 @@ public interface Command {
                 command = new CommandExit(argumentText);
                 break;
             default:
-                throw new Exception("Unknown command '" + commandText + "'");
+                throw new Exception(String.format(Helper.INVALID_COMMAND, commandText));
         }
         return command;
     }
 
-    public String execute(TextContainer tc) throws Exception;
+    public String execute(TextContainer container) throws Exception;
 }

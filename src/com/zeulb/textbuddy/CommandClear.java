@@ -3,16 +3,18 @@ package com.zeulb.textbuddy;
 public class CommandClear implements Command {
 
     public CommandClear(String args) throws Exception {
-        if (args.trim().length() > 0) {
-            throw new Exception("Command 'delete' doesn't need any arguments");
+        if (args.length() > 0) {
+            throw new Exception(String.format(Helper.INVALID_ARGUMENT, "clear"));
         }
     }
 
     @Override
-    public String execute(TextContainer tc) {
-        String fileName = tc.getFileName();
-        tc.clear();
-        return "all content deleted from " + fileName;
+    public String execute(TextContainer container) {
+        
+        container.clear();
+        
+        String fileName = container.getFileName();
+        return String.format(Helper.CLEAR_FORMAT, fileName);
     }
 
 }

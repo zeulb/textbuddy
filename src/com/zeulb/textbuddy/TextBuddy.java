@@ -9,31 +9,35 @@ public class TextBuddy {
         try {
             fileName = args[0];
         } catch (IndexOutOfBoundsException e) {
-            System.out.println("Please provide text file location");
+            System.out.format(Helper.NO_OUTPUT_FILE);
             return;
         }
         
-        TextContainer tc = new TextContainer(fileName);
+        TextContainer container = new TextContainer(fileName);
         Scanner sc = new Scanner(System.in);
         
+        System.out.format(Helper.WELCOME_MESSAGE, fileName);
         
-        System.out.println("Welcome to TextBuddy. " + fileName + " is ready for use");
         boolean isDone = false;
+        
         do {
-            System.out.print("command: ");
+            System.out.print(Helper.COMMAND_PROMPT);
             String text = sc.nextLine();
+            
+            Command command = null;
             try {
-                Command command = Command.parseCommand(text);
-                System.out.println(command.execute(tc));
-                tc.save();
+                command = Command.parseCommand(text);
+                System.out.print(command.execute(container));
+                
+                container.save();
             } catch (Exception e) {
-                if (e.getMessage().equals(".exit")) {
-                    isDone = true;
-                }
-                else {
-                    System.out.println(e.getMessage());
-                }
+                System.out.println(e.getMessage());
             }
+            
+            if (command instanceof CommandExit) {
+                isDone = true;
+            }
+            
         } while(!isDone);
         sc.close();
     }
