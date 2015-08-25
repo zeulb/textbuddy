@@ -13,11 +13,9 @@ public class Helper {
 
     public static final String ERROR_NO_OUTPUT_FILE = "no file provided";
     public static final String ERROR_INVALID_COMMAND = "unknown command '%1$s'";
-    public static final String ERROR_INVALID_ARGUMENT = "invalid number of arguments for command '%1$s'";
-    public static final String ERROR_NON_INTEGER_ARGUMENT = "argument for command '%1$s' is not an integer";
-    public static final String ERROR_OUT_OF_BOUNDS_ARGUMENT = "argument for command '%1$s' is out of bounds";
-    
-    public static final String EXIT = "EXIT";
+    public static final String ERROR_INVALID_ARGUMENT = "invalid number of arguments";
+    public static final String ERROR_NON_INTEGER_ARGUMENT = "argument is not an integer";
+    public static final String ERROR_OUT_OF_BOUNDS_ARGUMENT = "argument is out of bounds";
 
     public static String getFirstWord(String text) {
         int spacePosition = text.indexOf(' ');

@@ -8,7 +8,7 @@ public class CommandDelete implements Command {
         try {
             deleteIndex = Integer.parseInt(args)-1;
         } catch (NumberFormatException e) {
-            throw new Exception(String.format(Helper.ERROR_NON_INTEGER_ARGUMENT, "delete"));
+            throw new Exception(Helper.ERROR_NON_INTEGER_ARGUMENT);
         }
     }
     
@@ -19,7 +19,7 @@ public class CommandDelete implements Command {
         try {
             text = container.remove(deleteIndex);
         } catch (IndexOutOfBoundsException e) {
-            throw new Exception(String.format(Helper.OUT_OF_BOUNDS_ARGUMENT, "delete"));
+            throw new Exception(Helper.ERROR_OUT_OF_BOUNDS_ARGUMENT);
         }
         
         String fileName = container.getFileName();

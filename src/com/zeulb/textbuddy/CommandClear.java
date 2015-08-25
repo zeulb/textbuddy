@@ -4,7 +4,7 @@ public class CommandClear implements Command {
 
     public CommandClear(String args) throws Exception {
         if (args.length() > 0) {
-            throw new Exception(String.format(Helper.ERROR_INVALID_ARGUMENT, "clear"));
+            throw new Exception(Helper.ERROR_INVALID_ARGUMENT);
         }
     }
 

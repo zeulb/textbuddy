@@ -4,7 +4,7 @@ public class CommandExit implements Command {
 
     public CommandExit(String args) throws Exception {
         if (args.length() > 0) {
-            throw new Exception(String.format(Helper.ERROR_INVALID_ARGUMENT, "exit"));
+            throw new Exception(Helper.ERROR_INVALID_ARGUMENT);
         }
     }
     

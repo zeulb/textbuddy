@@ -4,7 +4,7 @@ public class CommandDisplay implements Command {
     
     public CommandDisplay(String args) throws Exception {
         if (args.length() > 0) {
-            throw new Exception(String.format(Helper.ERROR_INVALID_ARGUMENT, "display"));
+            throw new Exception(Helper.ERROR_INVALID_ARGUMENT);
         }
     }
 
