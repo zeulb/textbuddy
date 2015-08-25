@@ -5,7 +5,9 @@ public interface Command {
     public static Command parseCommand(String text) throws Exception {
         String commandText = StringHelper.getFirstWord(text);
         String argumentText = text.substring(commandText.length());
+        
         Command command;
+        
         switch (commandText) {
             case "add":
                 command = new CommandAdd(argumentText);

@@ -22,28 +22,21 @@ public class TextContainer extends ArrayList<String> {
 
     @Override
     public String toString() {
-        if (size() > 0) {
-            StringBuffer sb = new StringBuffer();
-            for (int index = 0; index < size(); index++) {
-                if (index > 0) {
-                    sb.append("\n");
-                }
-                sb.append(index+1);
-                sb.append(". ");
-                sb.append(get(index));
+        StringBuffer sb = new StringBuffer();
+        for (int index = 0; index < size(); index++) {
+            if (index > 0) {
+                sb.append("\n");
             }
-            return sb.toString();
+            sb.append(index+1);
+            sb.append(". ");
+            sb.append(get(index));
         }
-        else {
-            return fileName + " is empty";
-        }
+        return sb.toString();
     }
     
     public void save() throws Exception {
         PrintWriter out = new PrintWriter(fileName);
-        if (size() > 0) {
-            out.print(toString());
-        }
+        out.println(toString());
         out.close();
     }
     

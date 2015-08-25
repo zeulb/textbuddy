@@ -9,9 +9,9 @@ public class CommandAdd implements Command {
     }
 
     @Override
-    public String execute(TextContainer container) {
-        String fileName = container.getFileName();
-        container.add(text);
+    public String execute(TextContainer tc) {
+        String fileName = tc.getFileName();
+        tc.add(text);
         
         return "added to " + fileName + ": \"" + text + "\"";
     }

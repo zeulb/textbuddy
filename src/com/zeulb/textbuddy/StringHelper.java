@@ -11,5 +11,5 @@ public class StringHelper {
             return text;
         }
     }
-    
+
 }

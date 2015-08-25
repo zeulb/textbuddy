@@ -6,7 +6,6 @@ public class CommandClear implements Command {
         if (args.trim().length() > 0) {
             throw new Exception("Command 'delete' doesn't need any arguments");
         }
-        
     }
 
     @Override

@@ -9,8 +9,14 @@ public class CommandDisplay implements Command {
     }
 
     @Override
-    public String execute(TextContainer container) {
-        return container.toString();
+    public String execute(TextContainer tc) {
+        String fileName = tc.getFileName();
+        if (tc.size() > 0) {
+            return tc.toString();
+        }
+        else {
+            return fileName + " is empty";
+        }
     }
 
 }
