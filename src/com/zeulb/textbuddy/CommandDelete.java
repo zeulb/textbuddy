@@ -6,7 +6,7 @@ public class CommandDelete implements Command {
 
     public CommandDelete(String args) throws Exception {
         try {
-            index = Integer.parseInt(args.trim());
+            index = Integer.parseInt(args.trim())-1;
         } catch (NumberFormatException e) {
             throw new Exception("Argument for command 'delete' is not an integer");
         }

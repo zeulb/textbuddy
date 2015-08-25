@@ -25,10 +25,12 @@ public class TextContainer extends ArrayList<String> {
         if (size() > 0) {
             StringBuffer sb = new StringBuffer();
             for (int index = 0; index < size(); index++) {
-                sb.append(index);
+                if (index > 0) {
+                    sb.append("\n");
+                }
+                sb.append(index+1);
                 sb.append(". ");
                 sb.append(get(index));
-                sb.append("\n");
             }
             return sb.toString();
         }
@@ -39,7 +41,9 @@ public class TextContainer extends ArrayList<String> {
     
     public void save() throws Exception {
         PrintWriter out = new PrintWriter(fileName);
-        out.print(toString());
+        if (size() > 0) {
+            out.print(toString());
+        }
         out.close();
     }
     

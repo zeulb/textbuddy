@@ -12,8 +12,10 @@ public class TextBuddy {
             System.out.println("Please provide text file location");
             return;
         }
+        
         TextContainer tc = new TextContainer(fileName);
         Scanner sc = new Scanner(System.in);
+        
         
         System.out.println("Welcome to TextBuddy. " + fileName + " is ready for use");
         boolean isDone = false;
@@ -23,13 +25,16 @@ public class TextBuddy {
             try {
                 Command command = Command.parseCommand(text);
                 System.out.println(command.execute(tc));
+                tc.save();
             } catch (Exception e) {
-                if (e.getMessage() == "exit") {
+                if (e.getMessage().equals(".exit")) {
                     isDone = true;
                 }
-                System.out.println(e.getClass());
+                else {
+                    System.out.println(e.getMessage());
+                }
             }
-        } while(sc.hasNextLine() && !isDone);
+        } while(!isDone);
         sc.close();
     }
 

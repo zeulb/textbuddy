@@ -13,7 +13,7 @@ public class CommandClear implements Command {
     public String execute(TextContainer tc) {
         String fileName = tc.getFileName();
         tc.clear();
-        return "all content deleted from" + fileName;
+        return "all content deleted from " + fileName;
     }
 
 }
