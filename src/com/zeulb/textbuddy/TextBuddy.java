@@ -1,3 +1,4 @@
+package com.zeulb.textbuddy;
 
 public class TextBuddy {
 
