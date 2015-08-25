@@ -4,7 +4,7 @@ public class CommandClear implements Command {
 
     public CommandClear(String args) throws Exception {
         if (args.length() > 0) {
-            throw new Exception(String.format(Helper.INVALID_ARGUMENT, "clear"));
+            throw new Exception(String.format(Helper.ERROR_INVALID_ARGUMENT, "clear"));
         }
     }
 
@@ -14,7 +14,7 @@ public class CommandClear implements Command {
         container.clear();
         
         String fileName = container.getFileName();
-        return String.format(Helper.CLEAR_FORMAT, fileName);
+        return String.format(Helper.MESSAGE_CLEAR, fileName);
     }
 
 }

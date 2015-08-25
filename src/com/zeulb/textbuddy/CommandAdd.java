@@ -14,6 +14,6 @@ public class CommandAdd implements Command {
         container.add(text);
         
         String fileName = container.getFileName();
-        return String.format(Helper.ADD_TEXT_FORMAT, fileName, text);
+        return String.format(Helper.MESSAGE_ADD_TEXT, fileName, text);
     }
 }

@@ -23,8 +23,8 @@ public class TextContainer extends ArrayList<String> {
     @Override
     public String toString() {
         StringBuffer sb = new StringBuffer();
-        for (int index = 0; index < size(); index++) {
-            sb.append(String.format(Helper.DISPLAY_FORMAT, index+1, get(index)));
+        for (int i = 0; i < size(); i++) {
+            sb.append(String.format(Helper.MESSAGE_DISPLAY, i+1, get(i)));
         }
         return sb.toString();
     }

@@ -4,7 +4,7 @@ public class CommandDisplay implements Command {
     
     public CommandDisplay(String args) throws Exception {
         if (args.length() > 0) {
-            throw new Exception(String.format(Helper.INVALID_ARGUMENT, "display"));
+            throw new Exception(String.format(Helper.ERROR_INVALID_ARGUMENT, "display"));
         }
     }
 
@@ -16,7 +16,7 @@ public class CommandDisplay implements Command {
         }
         else {
             String fileName = container.getFileName();
-            return String.format(Helper.IS_EMPTY_FORMAT, fileName);
+            return String.format(Helper.MESSAGE_IS_EMPTY, fileName);
         }
     }
 

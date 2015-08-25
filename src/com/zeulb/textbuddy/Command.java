@@ -25,7 +25,7 @@ public interface Command {
                 command = new CommandExit(argumentText);
                 break;
             default:
-                throw new Exception(String.format(Helper.INVALID_COMMAND, commandText));
+                throw new Exception(String.format(Helper.ERROR_INVALID_COMMAND, commandText));
         }
         return command;
     }

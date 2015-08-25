@@ -8,7 +8,7 @@ public class CommandDelete implements Command {
         try {
             deleteIndex = Integer.parseInt(args)-1;
         } catch (NumberFormatException e) {
-            throw new Exception(String.format(Helper.NON_INTEGER_ARGUMENT, "delete"));
+            throw new Exception(String.format(Helper.ERROR_NON_INTEGER_ARGUMENT, "delete"));
         }
     }
     
@@ -23,7 +23,7 @@ public class CommandDelete implements Command {
         }
         
         String fileName = container.getFileName();
-        return String.format(Helper.DELETED_FORMAT, fileName, text);
+        return String.format(Helper.MESSAGE_DELETE, fileName, text);
     }
 
 }

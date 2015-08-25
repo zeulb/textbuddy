@@ -9,7 +9,7 @@ public class TextBuddy {
         try {
             fileName = args[0];
         } catch (IndexOutOfBoundsException e) {
-            System.out.format(Helper.NO_OUTPUT_FILE);
+            System.out.println(Helper.ERROR_NO_OUTPUT_FILE);
             return;
         }
         
