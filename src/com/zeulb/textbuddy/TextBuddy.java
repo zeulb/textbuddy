@@ -16,7 +16,21 @@ public class TextBuddy {
         Scanner sc = new Scanner(System.in);
         
         System.out.println("Welcome to TextBuddy. " + fileName + " is ready for use");
-        
+        boolean isDone = false;
+        do {
+            System.out.print("command: ");
+            String text = sc.nextLine();
+            try {
+                Command command = Command.parseCommand(text);
+                System.out.println(command.execute(tc));
+            } catch (Exception e) {
+                if (e.getMessage() == "exit") {
+                    isDone = true;
+                }
+                System.out.println(e.getClass());
+            }
+        } while(sc.hasNextLine() && !isDone);
+        sc.close();
     }
 
 }
