@@ -4,17 +4,9 @@ import java.util.Scanner;
 
 public class TextBuddy {
     
-    public static void main(String[] args) {
-        String fileName;
-        try {
-            fileName = args[0];
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println(Helper.ERROR_NO_OUTPUT_FILE);
-            return;
-        }
-        
-        TextContainer container = new TextContainer(fileName);
+    public static void start(String fileName) {
         Scanner sc = new Scanner(System.in);
+        TextContainer container = new TextContainer(fileName);
         
         System.out.format(Helper.WELCOME_MESSAGE, fileName);
         
@@ -27,11 +19,15 @@ public class TextBuddy {
             Command command = null;
             try {
                 command = Command.parseCommand(text);
-                System.out.print(command.execute(container));
+                
+                String successMessage = command.execute(container);
+                System.out.print(successMessage);
                 
                 container.save();
             } catch (Exception e) {
-                System.out.println(e.getMessage());
+                
+                String errorMessage = e.getMessage();
+                System.out.println(errorMessage);
             }
             
             if (command instanceof CommandExit) {
@@ -40,6 +36,15 @@ public class TextBuddy {
             
         } while(!isDone);
         sc.close();
+    }
+    
+    public static void main(String[] args) {
+        try {
+            String fileName = args[0];
+            start(fileName);
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println(Helper.ERROR_NO_OUTPUT_FILE);
+        }
     }
 
 }
