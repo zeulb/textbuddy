@@ -1,32 +1,46 @@
 package com.zeulb.textbuddy;
 
-import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+@SuppressWarnings("serial")
 public class TextContainer extends ArrayList<String> {
     
-    String fileName;
+    private String fileName;
     
     public TextContainer(String fileName) {
+        setFileName(fileName);
+    }
+    
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
         this.fileName = fileName;
-        
+    }
+
+    @Override
+    public String toString() {
+        if (size() > 0) {
+            StringBuffer sb = new StringBuffer();
+            for (int index = 0; index < size(); index++) {
+                sb.append(index);
+                sb.append(". ");
+                sb.append(get(index));
+                sb.append("\n");
+            }
+            return sb.toString();
+        }
+        else {
+            return fileName + " is empty";
+        }
     }
     
     public void save() throws Exception {
-        try {
-            PrintWriter pw = new PrintWriter(fileName);
-            for (int index = 0; index < size(); index++) {
-                // Print the index number
-                pw.print(index);
-                // Print the dot and space and its content
-                pw.print(". " + get(index));
-            }
-            pw.close();
-        } catch (FileNotFoundException e) {
-            throw new Exception("File not found"); 
-        }
-        
+        PrintWriter out = new PrintWriter(fileName);
+        out.print(toString());
+        out.close();
     }
     
 }
