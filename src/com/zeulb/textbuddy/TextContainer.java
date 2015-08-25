@@ -31,7 +31,7 @@ public class TextContainer extends ArrayList<String> {
     
     public void save() throws Exception {
         PrintWriter out = new PrintWriter(fileName);
-        out.println(toString());
+        out.print(toString());
         out.close();
     }
     
