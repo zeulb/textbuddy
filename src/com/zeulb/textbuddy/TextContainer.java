@@ -24,6 +24,9 @@ public class TextContainer extends ArrayList<String> {
     public String toString() {
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < size(); i++) {
+            if (i > 0) {
+                sb.append("\n");
+            }
             sb.append(String.format(Helper.MESSAGE_DISPLAY, i+1, get(i)));
         }
         return sb.toString();

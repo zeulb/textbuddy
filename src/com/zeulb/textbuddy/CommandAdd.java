@@ -4,7 +4,10 @@ public class CommandAdd implements Command {
     
     private String text;
     
-    public CommandAdd(String args) {
+    public CommandAdd(String args) throws Exception {
+        if (args.isEmpty()) {
+            throw new Exception(Helper.ERROR_BLANK_TEXT);
+        }
         text = args;
     }
 

@@ -4,38 +4,38 @@ import java.util.Scanner;
 
 public class TextBuddy {
     
+    public static Scanner scanner = new Scanner(System.in);
+    public static TextContainer container;
+    public static boolean shouldExit = false;
+    
+    public static String process(String userResponse) {
+        Command command = null;
+        String feedback;
+        try {
+            command = Command.parseCommand(userResponse);
+            feedback = command.execute(container);
+            container.save();
+        } catch (Exception e) {
+            feedback = e.getMessage();
+        }
+        
+        if (command instanceof CommandExit) {
+            shouldExit = true;
+        }
+        return feedback;
+    }
+    
     public static void start(String fileName) {
-        Scanner sc = new Scanner(System.in);
-        TextContainer container = new TextContainer(fileName);
+        container = new TextContainer(fileName);
+        System.out.println(String.format(Helper.WELCOME_MESSAGE, fileName));
         
-        System.out.format(Helper.WELCOME_MESSAGE, fileName);
-        
-        boolean isDone = false;
-        
+        boolean shouldExit = false;
         do {
             System.out.print(Helper.COMMAND_PROMPT);
-            String text = sc.nextLine();
-            
-            Command command = null;
-            try {
-                command = Command.parseCommand(text);
-                
-                String successMessage = command.execute(container);
-                System.out.print(successMessage);
-                
-                container.save();
-            } catch (Exception e) {
-                
-                String errorMessage = e.getMessage();
-                System.out.println(errorMessage);
-            }
-            
-            if (command instanceof CommandExit) {
-                isDone = true;
-            }
-            
-        } while(!isDone);
-        sc.close();
+            String userResponse = scanner.nextLine();
+            String feedback = process(userResponse);
+            System.out.println(feedback);
+        } while(!shouldExit);
     }
     
     public static void main(String[] args) {
