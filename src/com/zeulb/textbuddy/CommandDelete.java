@@ -14,7 +14,6 @@ public class CommandDelete implements Command {
     
     @Override
     public String execute(TextContainer container) throws Exception {
-        
         String text;
         try {
             text = container.remove(deleteIndex);

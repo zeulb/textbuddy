@@ -10,7 +10,6 @@ public class CommandClear implements Command {
 
     @Override
     public String execute(TextContainer container) {
-        
         container.clear();
         
         String fileName = container.getFileName();

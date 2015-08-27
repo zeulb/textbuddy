@@ -6,7 +6,7 @@ public class TextBuddy {
     
     public static Scanner scanner = new Scanner(System.in);
     public static TextContainer container;
-    public static boolean shouldExit = false;
+    public static boolean shouldExit;
     
     public static String process(String userResponse) {
         Command command = null;
@@ -27,9 +27,10 @@ public class TextBuddy {
     
     public static void start(String fileName) {
         container = new TextContainer(fileName);
+        shouldExit = false;
+        
         System.out.println(String.format(Helper.WELCOME_MESSAGE, fileName));
         
-        boolean shouldExit = false;
         do {
             System.out.print(Helper.COMMAND_PROMPT);
             String userResponse = scanner.nextLine();

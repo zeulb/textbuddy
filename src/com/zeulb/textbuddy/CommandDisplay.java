@@ -10,7 +10,6 @@ public class CommandDisplay implements Command {
 
     @Override
     public String execute(TextContainer container) {
-        
         if (container.size() > 0) {
             return container.toString();
         }
