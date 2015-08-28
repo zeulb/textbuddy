@@ -11,6 +11,7 @@ public class Helper {
     public static final String MESSAGE_DELETE = "deleted from %1$s: \"%2$s\"";
     public static final String MESSAGE_CLEAR = "all content deleted from %1$s";
 
+    public static final String ERROR_IMPORT_FAILED = "unable to import file";
     public static final String ERROR_NO_OUTPUT_FILE = "no file provided";
     public static final String ERROR_BLANK_TEXT = "unable to add blank text";
     public static final String ERROR_INVALID_COMMAND = "unknown command '%1$s'";

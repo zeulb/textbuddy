@@ -7,7 +7,7 @@ public class CommandDelete implements Command {
     public CommandDelete(String args) throws Exception {
         try {
             deleteIndex = Integer.parseInt(args)-1;
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException nfe) {
             throw new Exception(Helper.ERROR_NON_INTEGER_ARGUMENT);
         }
     }
