@@ -2,8 +2,8 @@ package com.zeulb.textbuddy;
 
 public class Helper {
     
-    public static final String WELCOME_MESSAGE = "Welcome to TextBuddy. %1$s is ready for use";
-    public static final String COMMAND_PROMPT = "command: ";
+    public static final String MESSAGE_WELCOME = "Welcome to TextBuddy. %1$s is ready for use";
+    public static final String MESSAGE_PROMPT = "command: ";
     
     public static final String MESSAGE_DISPLAY = "%1$d. %2$s";
     public static final String MESSAGE_ADD_TEXT = "added to %1$s: \"%2$s\"";

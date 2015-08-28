@@ -29,10 +29,10 @@ public class TextBuddy {
         container = new TextContainer(fileName);
         shouldExit = false;
         
-        System.out.println(String.format(Helper.WELCOME_MESSAGE, fileName));
+        System.out.println(String.format(Helper.MESSAGE_WELCOME, fileName));
         
         do {
-            System.out.print(Helper.COMMAND_PROMPT);
+            System.out.print(Helper.MESSAGE_PROMPT);
             String userResponse = scanner.nextLine();
             String feedback = process(userResponse);
             System.out.println(feedback);
