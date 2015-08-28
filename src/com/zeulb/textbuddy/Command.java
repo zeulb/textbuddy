@@ -2,9 +2,13 @@ package com.zeulb.textbuddy;
 
 public interface Command {
     
+    /*
+     * Parses the string argument as a command object
+     * @param text the text that needs to be parsed as command
+     */
     public static Command parseCommand(String text) throws Exception {
         String commandText = Helper.getFirstWord(text);
-        String argumentText = text.substring(commandText.length()).trim();
+        String argumentText = Helper.removeFirstWord(text).trim();
         
         Command command;
         
@@ -29,6 +33,10 @@ public interface Command {
         }
         return command;
     }
-
+    
+    /*
+     * Execute command
+     * @param container the container where the operation will be executed
+     */
     public String execute(TextContainer container) throws Exception;
 }

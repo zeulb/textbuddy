@@ -19,7 +19,11 @@ public class Helper {
     public static final String ERROR_NON_INTEGER_ARGUMENT = "parameter is not an integer";
     public static final String ERROR_OUT_OF_BOUNDS_ARGUMENT = "index is out of bounds";
 
+    /**
+     * Return first word from given text
+     */
     public static String getFirstWord(String text) {
+        // Find the first whitespace position
         int spacePosition = text.indexOf(' ');
         if (spacePosition > -1) {
             return text.substring(0, spacePosition);
@@ -28,5 +32,12 @@ public class Helper {
             return text;
         }
     }
-
+    
+    /**
+     * Return text without its first word
+     */
+    public static String removeFirstWord(String text) {
+        String firstWord = getFirstWord(text);
+        return text.substring(firstWord.length());
+    }
 }

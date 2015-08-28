@@ -8,6 +8,10 @@ public class TextBuddy {
     public static TextContainer container;
     public static boolean shouldExit;
     
+    /**
+     * Process user input
+     * @param userResponse string entered by user
+     */
     public static String process(String userResponse) {
         Command command = null;
         String feedback;
@@ -25,6 +29,10 @@ public class TextBuddy {
         return feedback;
     }
     
+    /**
+     * Start communication between program and user
+     * @param fileName name of file that will be used for storage
+     */
     public static void start(String fileName) {
         container = new TextContainer(fileName);
         shouldExit = false;
@@ -39,11 +47,15 @@ public class TextBuddy {
         } while(!shouldExit);
     }
     
+    /**
+     * Get file name from parameter provided by user
+     * @param args arguments provided by user
+     */
     public static void main(String[] args) {
         try {
             String fileName = args[0];
             start(fileName);
-        } catch (IndexOutOfBoundsException e) {
+        } catch (IndexOutOfBoundsException ioobe) {
             System.out.println(Helper.ERROR_NO_OUTPUT_FILE);
         }
     }

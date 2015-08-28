@@ -9,8 +9,12 @@ import java.util.Scanner;
 @SuppressWarnings("serial")
 public class TextContainer extends ArrayList<String> {
     
+    /**
+     * Class constructor specifying file for storage
+     */
     public TextContainer(String fileName) {
         setFileName(fileName);
+        // Try to import texts from file
         try {
             importFromFile();
         } catch (Exception e) {
@@ -28,19 +32,26 @@ public class TextContainer extends ArrayList<String> {
         this.fileName = fileName;
     }
     
+    /**
+     * Import texts from file to container
+     * @throws Exception
+     */
     public void importFromFile() throws Exception {
         File file = new File(fileName);
         try {
             Scanner scanner = new Scanner(file);
-            int i = 0;
+            int currentNumber = 0;
             boolean isFailed = false;
             while(scanner.hasNextLine() && !isFailed) {
                 String text = scanner.nextLine().trim();
+                
                 if (!text.isEmpty()) {
-                    i++;
-                    String numberingPrefix = Integer.toString(i) + ". ";
+                    currentNumber++;
+                    String numberingPrefix = Integer.toString(currentNumber) + ". ";
+                    
+                    // Check if text in valid format
                     if (text.startsWith(numberingPrefix)) {
-                        String message = text.substring(numberingPrefix.length());
+                        String message = Helper.removeFirstWord(text).trim();
                         this.add(message);
                     }
                     else {
@@ -53,11 +64,11 @@ public class TextContainer extends ArrayList<String> {
                 throw new Exception(Helper.ERROR_IMPORT_FAILED);
             }
         } catch (FileNotFoundException fnfe) {
-            // Do nothing
+            // Import nothing
         }
         
     }
-
+    
     @Override
     public String toString() {
         StringBuffer sb = new StringBuffer();
@@ -70,6 +81,10 @@ public class TextContainer extends ArrayList<String> {
         return sb.toString();
     }
     
+    /**
+     * Import texts from container to file
+     * @throws Exception
+     */
     public void save() throws Exception {
         PrintWriter out = new PrintWriter(fileName);
         out.print(toString());

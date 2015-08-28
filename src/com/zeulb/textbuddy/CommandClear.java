@@ -2,6 +2,9 @@ package com.zeulb.textbuddy;
 
 public class CommandClear implements Command {
 
+    /**
+     * Class constructor specifying arguments for the command
+     */
     public CommandClear(String args) throws Exception {
         if (args.length() > 0) {
             throw new Exception(Helper.ERROR_INVALID_ARGUMENT);
