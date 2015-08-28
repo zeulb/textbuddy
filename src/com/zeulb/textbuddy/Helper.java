@@ -1,5 +1,8 @@
 package com.zeulb.textbuddy;
 
+/**
+ * This class provides useful helper methods and string constants
+ */
 public class Helper {
     
     public static final String MESSAGE_WELCOME = "Welcome to TextBuddy. %1$s is ready for use";
@@ -21,6 +24,7 @@ public class Helper {
 
     /**
      * Return first word from given text
+     * @return The first word
      */
     public static String getFirstWord(String text) {
         // Find the first whitespace position
@@ -34,7 +38,8 @@ public class Helper {
     }
     
     /**
-     * Return text without its first word
+     * Remove first word from text
+     * @return Text without its first word
      */
     public static String removeFirstWord(String text) {
         String firstWord = getFirstWord(text);

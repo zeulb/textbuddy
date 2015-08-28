@@ -1,42 +1,49 @@
 package com.zeulb.textbuddy;
 
+/**
+ * All command class will implement this interface
+ * This interface also provide static method to parse command text
+ */
 public interface Command {
     
     /*
      * Parses the string argument as a command object
-     * @param text the text that needs to be parsed as command
+     * @param text The text that needs to be parsed as command
+     * @return An suitable instance of Object that implements Command based on command type
      */
     public static Command parseCommand(String text) throws Exception {
-        String commandText = Helper.getFirstWord(text);
-        String argumentText = Helper.removeFirstWord(text).trim();
+        String commandType = Helper.getFirstWord(text);
+        String arguments = Helper.removeFirstWord(text).trim();
         
         Command command;
         
-        switch (commandText) {
+        switch (commandType) {
             case "add":
-                command = new CommandAdd(argumentText);
+                command = new CommandAdd(arguments);
                 break;
             case "display":
-                command = new CommandDisplay(argumentText);
+                command = new CommandDisplay(arguments);
                 break;
             case "delete":
-                command = new CommandDelete(argumentText);
+                command = new CommandDelete(arguments);
                 break;
             case "clear":
-                command = new CommandClear(argumentText);
+                command = new CommandClear(arguments);
                 break;
             case "exit":
-                command = new CommandExit(argumentText);
+                command = new CommandExit(arguments);
                 break;
             default:
-                throw new Exception(String.format(Helper.ERROR_INVALID_COMMAND, commandText));
+                // throw exception if it is not a valid command
+                throw new Exception(String.format(Helper.ERROR_INVALID_COMMAND, commandType));
         }
         return command;
     }
     
     /*
      * Execute command
-     * @param container the container where the operation will be executed
+     * @param container The container where the operation will be executed
+     * @return Feedback from execution
      */
     public String execute(TextContainer container) throws Exception;
 }

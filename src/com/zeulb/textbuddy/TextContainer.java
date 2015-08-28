@@ -6,6 +6,10 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * This class extends ArrayList<String>
+ * This class is used for storage and retrieval from text file and program
+ */
 @SuppressWarnings("serial")
 public class TextContainer extends ArrayList<String> {
     
@@ -24,17 +28,24 @@ public class TextContainer extends ArrayList<String> {
     
     private String fileName;
     
+    /**
+     * Get current file name
+     * @return current file name
+     */
     public String getFileName() {
         return fileName;
     }
 
+    /**
+     * Set current file name
+     * @param fileName New file name
+     */
     public void setFileName(String fileName) {
         this.fileName = fileName;
     }
     
     /**
      * Import texts from file to container
-     * @throws Exception
      */
     public void importFromFile() throws Exception {
         File file = new File(fileName);
@@ -42,17 +53,21 @@ public class TextContainer extends ArrayList<String> {
             Scanner scanner = new Scanner(file);
             int currentNumber = 0;
             boolean isFailed = false;
+            
             while(scanner.hasNextLine() && !isFailed) {
                 String text = scanner.nextLine().trim();
                 
+                // Check if text is blank
                 if (!text.isEmpty()) {
+                    // Increase line counter
                     currentNumber++;
                     String numberingPrefix = Integer.toString(currentNumber) + ". ";
                     
-                    // Check if text in valid format
+                    // Check if text is in a valid format
                     if (text.startsWith(numberingPrefix)) {
                         String message = Helper.removeFirstWord(text).trim();
-                        this.add(message);
+                        // Add to current container
+                        add(message);
                     }
                     else {
                         isFailed = true;
@@ -64,15 +79,19 @@ public class TextContainer extends ArrayList<String> {
                 throw new Exception(Helper.ERROR_IMPORT_FAILED);
             }
         } catch (FileNotFoundException fnfe) {
-            // Import nothing
+            // There is nothing to import, do nothing
         }
-        
     }
     
+    /**
+     * Append all texts
+     * @return Human readable string of all texts inside container
+     */
     @Override
     public String toString() {
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < size(); i++) {
+            // No need to add new line before the first row
             if (i > 0) {
                 sb.append("\n");
             }
@@ -83,7 +102,6 @@ public class TextContainer extends ArrayList<String> {
     
     /**
      * Import texts from container to file
-     * @throws Exception
      */
     public void save() throws Exception {
         PrintWriter out = new PrintWriter(fileName);

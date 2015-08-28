@@ -1,8 +1,13 @@
 package com.zeulb.textbuddy;
 
+/**
+ * All add command is instantiated from this class
+ * Add command accepts one non-blank string argument 
+ */
 public class CommandAdd implements Command {
     
     private String text;
+    
     /**
      * Class constructor specifying arguments for the command
      */
@@ -12,10 +17,13 @@ public class CommandAdd implements Command {
         }
         text = args;
     }
-
+    
+    /**
+     * Insert text to the container
+     * @return Successfully added message
+     */
     @Override
     public String execute(TextContainer container) {
-        
         container.add(text);
         
         String fileName = container.getFileName();
