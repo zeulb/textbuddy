@@ -18,10 +18,11 @@ public class CommandAddTest {
     @Test
     public void testCanAdd() throws Exception {
         Command cmd = new CommandAdd("sleep  ");
-        cmd.execute(tc);
+        String feedback = cmd.execute(tc);
         
         assertEquals(1, tc.size());
         assertEquals("sleep", tc.get(0));
+        assertEquals(String.format(Helper.MESSAGE_ADD_TEXT, fileName, "sleep"), feedback);
     }
     
     @Test
