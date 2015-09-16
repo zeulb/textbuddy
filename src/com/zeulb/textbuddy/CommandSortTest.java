@@ -17,7 +17,7 @@ public class CommandSortTest {
     }
 
     @Test
-    public void testCannotTakesArguments() {
+    public void testCannotTakeArguments() {
         try {
             Command cmd = new CommandSort(" helo");
             fail("exception should be thrown");

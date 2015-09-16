@@ -17,18 +17,33 @@ public class CommandSearchTest {
     }
 
     @Test
-    public void testCannotTakesArguments() {
+    public void testTakeExactlyOneKeyword() {
         try {
-            Command cmd = new CommandSort(" helo");
+            Command cmd = new CommandSearch(" helo halo elo");
             fail("exception should be thrown");
             cmd.execute(tc);
         } catch(Exception e) {
             assertEquals(Helper.ERROR_INVALID_ARGUMENT, e.getMessage());
         }
+        
+        try {
+            Command cmd = new CommandSearch("     ");
+            fail("exception should be thrown");
+            cmd.execute(tc);
+        } catch(Exception e) {
+            assertEquals(Helper.ERROR_INVALID_ARGUMENT, e.getMessage());
+        }
+        
+        try {
+            Command cmd = new CommandSearch(" budi ");
+            cmd.execute(tc);
+        } catch(Exception e) {
+            fail("exception should not be thrown");
+        }
     }
-
+    
     @Test
-    public void test() {
+    public void testCanSearchByKeyword() {
         fail("Not yet implemented");
     }
 
