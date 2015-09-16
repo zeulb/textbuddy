@@ -1,5 +1,7 @@
 package com.zeulb.textbuddy;
 
+import java.util.ArrayList;
+
 /**
  * This class provides useful helper methods and string constants
  */
@@ -46,4 +48,21 @@ public class Helper {
         String firstWord = getFirstWord(text);
         return text.substring(firstWord.length());
     }
+    
+    /**
+     * Get formatted string from a list of String
+     * @return Formatted string
+     */
+    public static String getFormattedList(ArrayList<String> list) {
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < list.size(); i++) {
+            // No need to add new line before the first row
+            if (i > 0) {
+                sb.append("\n");
+            }
+            sb.append(String.format(Helper.MESSAGE_DISPLAY, i+1, list.get(i)));
+        }
+        return sb.toString();
+    }
+    
 }

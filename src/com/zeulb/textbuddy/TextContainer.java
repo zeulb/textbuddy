@@ -89,15 +89,7 @@ public class TextContainer extends ArrayList<String> {
      */
     @Override
     public String toString() {
-        StringBuffer sb = new StringBuffer();
-        for (int i = 0; i < size(); i++) {
-            // No need to add new line before the first row
-            if (i > 0) {
-                sb.append("\n");
-            }
-            sb.append(String.format(Helper.MESSAGE_DISPLAY, i+1, get(i)));
-        }
-        return sb.toString();
+        return Helper.getFormattedList(this);
     }
     
     /**
