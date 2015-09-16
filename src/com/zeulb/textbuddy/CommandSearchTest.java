@@ -57,14 +57,14 @@ public class CommandSearchTest {
     public void testCanSearchByKeywordFound() throws Exception {
         tc.add("eat food");
         tc.add("dont eatt");
-        tc.add("no eat ");
+        tc.add("no eat no");
         tc.add("eat eat");
         Command cmd = new CommandSearch("eat");
         
         String feedback = cmd.execute(tc);
         assertEquals( "1. eat food\n"
-                    + "2. no eat\n"
-                    + "3. eat eat\n", feedback);
+                    + "2. no eat no\n"
+                    + "3. eat eat", feedback);
         
     }
 

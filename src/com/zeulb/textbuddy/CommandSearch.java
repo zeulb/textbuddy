@@ -1,5 +1,7 @@
 package com.zeulb.textbuddy;
 
+import java.util.ArrayList;
+
 public class CommandSearch implements Command {
     
     private String keyword;
@@ -14,10 +16,31 @@ public class CommandSearch implements Command {
         keyword = argList[0];
     }
     
+    /**
+     * Check if keyword inside sentence
+     * @param sentence
+     * @return true if keyword inside sentence otherwise false
+     */
+    private boolean search(String sentence) {
+        String[] words = sentence.split("\\W+");
+        for (String word : words) {
+            if (word.equals(keyword)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
     @Override
     public String execute(TextContainer container) throws Exception {
-        // TODO Auto-generated method stub
-        return null;
+        ArrayList<String> filteredList = new ArrayList<String>();
+        for (String sentence : container) {
+            if (search(sentence)) {
+                filteredList.add(sentence);
+            }
+        }
+        
+        return Helper.getFormattedList(filteredList);
     }
 
 }
