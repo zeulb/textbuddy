@@ -40,7 +40,13 @@ public class CommandSearch implements Command {
             }
         }
         
-        return Helper.getFormattedList(filteredList);
+        if (filteredList.size() > 0) {
+            return Helper.getFormattedList(filteredList);
+        }
+        else {
+            String fileName = container.getFileName();
+            return String.format(Helper.MESSAGE_KEYWORD_NOT_FOUND, keyword, fileName);
+        }
     }
 
 }
