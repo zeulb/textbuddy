@@ -43,7 +43,7 @@ public class CommandSortTest {
         String feedback = cmd.execute(tc);
         
         // Check if correct feedback displayed
-        assertEquals(Helper.MESSAGE_SORT, feedback);
+        assertEquals(String.format(Helper.MESSAGE_SORT, fileName), feedback);
         
         // Check if text container size doesn't change
         assertEquals(5, tc.size());
@@ -65,7 +65,7 @@ public class CommandSortTest {
         String feedback = cmd.execute(tc);
         
         // Check if correct feedback displayed
-        assertEquals(Helper.MESSAGE_IS_EMPTY, feedback);
+        assertEquals(String.format(Helper.MESSAGE_IS_EMPTY, fileName), feedback);
         
     }
 

@@ -1,5 +1,7 @@
 package com.zeulb.textbuddy;
 
+import java.util.Collections;
+
 public class CommandSort implements Command {
     
     /**
@@ -13,8 +15,15 @@ public class CommandSort implements Command {
 
     @Override
     public String execute(TextContainer container) throws Exception {
-        // TODO Add execution of sort command
-        return null;
+        
+        String fileName = container.getFileName();
+        if (container.size() > 0) {
+            Collections.sort(container);
+            return String.format(Helper.MESSAGE_SORT, fileName);
+        }
+        else {
+            return String.format(Helper.MESSAGE_IS_EMPTY, fileName);
+        }
     }    
 
 }
