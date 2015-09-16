@@ -43,8 +43,29 @@ public class CommandSearchTest {
     }
     
     @Test
-    public void testCanSearchByKeyword() {
-        fail("Not yet implemented");
+    public void testCanSearchByKeywordNotFound() throws Exception {
+        tc.add("eatt food");
+        tc.add("eatt seafood");
+        tc.add("no eating");
+        Command cmd = new CommandSearch("eat");
+        
+        String feedback = cmd.execute(tc);
+        assertEquals(String.format(Helper.MESSAGE_KEYWORD_NOT_FOUND, "eat", fileName), feedback);  
+    }
+    
+    @Test
+    public void testCanSearchByKeywordFound() throws Exception {
+        tc.add("eat food");
+        tc.add("dont eatt");
+        tc.add("no eat ");
+        tc.add("eat eat");
+        Command cmd = new CommandSearch("eat");
+        
+        String feedback = cmd.execute(tc);
+        assertEquals( "1. eat food\n"
+                    + "2. no eat\n"
+                    + "3. eat eat\n", feedback);
+        
     }
 
 }
