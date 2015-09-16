@@ -17,7 +17,7 @@ public interface Command {
         
         Command command;
         
-        switch (commandType) {
+        switch (commandType.toLowerCase()) {
             case "add":
                 command = new CommandAdd(arguments);
                 break;
@@ -29,6 +29,12 @@ public interface Command {
                 break;
             case "clear":
                 command = new CommandClear(arguments);
+                break;
+            case "sort":
+                command = new CommandSort(arguments);
+                break;
+            case "search":
+                command = new CommandSearch(arguments);
                 break;
             case "exit":
                 command = new CommandExit(arguments);

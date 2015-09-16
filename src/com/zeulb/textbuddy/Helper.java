@@ -16,7 +16,7 @@ public class Helper {
     public static final String MESSAGE_DELETE = "deleted from %1$s: \"%2$s\"";
     public static final String MESSAGE_CLEAR = "all content deleted from %1$s";
     public static final String MESSAGE_SORT = "%1$s has been sorted";
-    public static final String MESSAGE_KEYWORD_NOT_FOUND = "%1$s not found in %2%s";
+    public static final String MESSAGE_KEYWORD_NOT_FOUND = "%1$s not found in %2$s";
 
     public static final String ERROR_IMPORT_FAILED = "unable to import file";
     public static final String ERROR_NO_OUTPUT_FILE = "no file provided";
