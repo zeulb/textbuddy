@@ -7,16 +7,16 @@ import java.util.Scanner;
  */
 public class TextBuddy {
     
-    public static Scanner scanner = new Scanner(System.in);
-    public static TextContainer container;
-    public static boolean shouldExit;
+    private static Scanner scanner = new Scanner(System.in);
+    private static TextContainer container;
+    private static boolean shouldExit;
     
     /**
      * Process user input
      * @param userResponse Text entered by user
      * @return Feedback from program
      */
-    public static String process(String userResponse) {
+    private static String executeResponse(String userResponse) {
         Command command = null;
         String feedback;
         try {
@@ -39,7 +39,7 @@ public class TextBuddy {
      * Start communication between program and user
      * @param fileName Name of file that will be used for storage
      */
-    public static void start(String fileName) {
+    private static void startPrompt(String fileName) {
         container = new TextContainer(fileName);
         shouldExit = false;
         
@@ -48,7 +48,7 @@ public class TextBuddy {
         do {
             System.out.print(Helper.MESSAGE_PROMPT);
             String userResponse = scanner.nextLine();
-            String feedback = process(userResponse);
+            String feedback = executeResponse(userResponse);
             System.out.println(feedback);
         } while(!shouldExit);
     }
@@ -60,7 +60,7 @@ public class TextBuddy {
     public static void main(String[] args) {
         try {
             String fileName = args[0];
-            start(fileName);
+            startPrompt(fileName);
         } catch (IndexOutOfBoundsException ioobe) {
             System.out.println(Helper.ERROR_NO_OUTPUT_FILE);
         }

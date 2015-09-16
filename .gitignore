@@ -1,0 +1,12 @@
+*.class
+.DS_Store
+/bin/
+*.txt
+*.md
+*.doc
+*.docx
+*.pdf
+*.zip
+.classpath
+.project
+.settings/*

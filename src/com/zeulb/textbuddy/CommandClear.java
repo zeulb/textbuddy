@@ -10,7 +10,7 @@ public class CommandClear implements Command {
      * Class constructor specifying arguments for the command
      */
     public CommandClear(String args) throws Exception {
-        if (!args.isEmpty()) {
+        if (!args.trim().isEmpty()) {
             throw new Exception(Helper.ERROR_INVALID_ARGUMENT);
         }
     }

@@ -10,7 +10,7 @@ public class CommandDisplay implements Command {
      * Class constructor specifying arguments for the command
      */
     public CommandDisplay(String args) throws Exception {
-        if (!args.isEmpty()) {
+        if (!args.trim().isEmpty()) {
             throw new Exception(Helper.ERROR_INVALID_ARGUMENT);
         }
     }

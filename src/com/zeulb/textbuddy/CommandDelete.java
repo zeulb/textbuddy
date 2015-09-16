@@ -14,7 +14,7 @@ public class CommandDelete implements Command {
     public CommandDelete(String args) throws Exception {
         // Try to parse arguments as an integer
         try {
-            deleteIndex = Integer.parseInt(args)-1;
+            deleteIndex = Integer.parseInt(args.trim())-1;
         } catch (NumberFormatException nfe) {
             throw new Exception(Helper.ERROR_NON_INTEGER_ARGUMENT);
         }
