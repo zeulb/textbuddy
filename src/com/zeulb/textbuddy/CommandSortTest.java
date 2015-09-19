@@ -12,12 +12,13 @@ public class CommandSortTest {
     
     @Before
     public void setUp() throws Exception {
+        // Create a empty dummy container file
         tc = new TextContainer(fileName);
         tc.clear();
     }
 
     @Test
-    public void testCannotTakeArguments() {
+    public void testShouldNotTakeAnyArguments() {
         try {
             Command cmd = new CommandSort(" helo");
             fail("exception should be thrown");
@@ -29,8 +30,8 @@ public class CommandSortTest {
     
     @Test
     public void testCanSortNonEmptyList() throws Exception {
-        // Add some data to text container
         
+        // Add some data to text container
         tc.add("sdk");
         tc.add("bb");
         tc.add("d");

@@ -21,12 +21,12 @@ public class CommandDisplay implements Command {
      */
     @Override
     public String execute(TextContainer container) {
-        if (container.size() > 0) {
-            return container.toString();
-        }
-        else {
+        if (container.isEmpty()) {
             String fileName = container.getFileName();
             return String.format(Helper.MESSAGE_IS_EMPTY, fileName);
+        }
+        else {
+            return container.toString();
         }
     }
 

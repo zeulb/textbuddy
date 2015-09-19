@@ -31,21 +31,26 @@ public class CommandSearch implements Command {
         return false;
     }
     
+    /**
+     * Display texts that contains specific keyword
+     */
     @Override
     public String execute(TextContainer container) throws Exception {
         ArrayList<String> filteredList = new ArrayList<String>();
         for (String sentence : container) {
+            // check all sentence inside the container
             if (search(sentence)) {
+                // if the sentence contains the keyword
                 filteredList.add(sentence);
             }
         }
         
-        if (filteredList.size() > 0) {
-            return Helper.getFormattedList(filteredList);
-        }
-        else {
+        if (filteredList.isEmpty()) {
             String fileName = container.getFileName();
             return String.format(Helper.MESSAGE_KEYWORD_NOT_FOUND, keyword, fileName);
+        }
+        else {
+            return Helper.getFormattedList(filteredList);
         }
     }
 
